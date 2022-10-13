@@ -1,0 +1,35 @@
+<div class="loginContainer">
+    <div class="headings">
+        <a routerLink="/"><img src="../../../assets/logo.jpg" alt="Spotify logo" /></a>
+        <h4>To continue, log in to Spotify.</h4>
+        <a id="fb">
+            <span><img src="../../../assets/fblogo.jpg" alt="facebook logo" /></span>
+            Continue with Facebook
+        </a>
+        <a id="google">
+            <span><img src="../../../assets/google.png" alt="Google logo" /></span>
+            Continue with Google
+        </a>
+        <a id="ph">
+            Continue with phone number
+        </a>
+        <div class="hrSection">
+            <hr> <span>or</span>
+            <hr>
+        </div>
+    </div>
+    <form class="loginForm">
+        <label for="email">Email address</label>
+        <input type="email" name="email" placeholder="Email address." class="inputBox" />
+
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="Password." class="inputBox" />
+
+        <a>Forgot your password?</a>
+
+        <button type="submit" id="loginBtn">Login</button>
+    </form>
+    <div class="ifHad">
+        <p>Don't have an account? <a routerLink="/signup">Sign up for Spotify</a></p>
+    </div>
+</div>

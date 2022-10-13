@@ -1,0 +1,69 @@
+<div class="singupContainer">
+    <div class="headings">
+        <a routerLink="/"><img src="../../../assets/logo.jpg" alt="Spotify logo" /></a>
+        <h1>Sign up for free to start listening.</h1>
+        <a id="fb">
+            <span><img src="../../../assets/fblogo.jpg" alt="facebook logo" /></span>
+            Sign up with Facebook
+        </a>
+        <a id="google">
+            <span><img src="../../../assets/google.png" alt="Google logo" /></span>
+            Sign up with Google
+        </a>
+        <div class="hrSection">
+            <hr> <span>or</span>
+            <hr>
+        </div>
+        <h3>Sign up with your email address</h3>
+    </div>
+    <form class="signupForm">
+        <label for="email">What's your email?</label>
+        <input type="email" name="email" placeholder="Enter your email." class="inputBox" />
+
+        <label for="password">Create a password</label>
+        <input type="password" name="password" placeholder="Create a password." class="inputBox" />
+
+        <label for="password">Confirm your password</label>
+        <input type="password" name="password" placeholder="Confirm your password." class="inputBox" />
+
+        <label for="username">What should we call you?</label>
+        <input type="text" name="username" placeholder="Enter a profile name." class="inputBox" />
+        <p>This appears on your profile.</p>
+
+        <label for="what">What's your date of birth?</label>
+        <div class="dob">
+            <div class="monthDiv">
+                <label for="Month">Month</label><br>
+                <input type="number" name="month" id="Month" placeholder="MM" min="1" max="12" />
+            </div>
+            <div class="dayDiv">
+                <label for="Day">Day</label><br>
+                <input type="number" name="day" id="Day" placeholder="DD" min="1" max="31" />
+            </div>
+            <div class="yearDiv">
+                <label for="Year">Month</label><br>
+                <input type="number" name="year" id="Year" placeholder="YYYY" min="1800" max="2500" />
+            </div>
+        </div>
+
+        <label>What's your gender?</label>
+        <div class="genderSection">
+            <div class="maleDiv">
+                <input type="radio" name="gender" id="male" value="Male" />
+                <label for="male">Male</label><br>
+            </div>
+            <div class="femaleDiv">
+                <input type="radio" name="gender" id="female" value="Female" />
+                <label for="female">Female</label><br>
+            </div>
+        </div>
+        <div class="agreement">
+            <p>By clicking on sign-up, you agree to Spotify's <a routerLink="/not">Terms and Conditions of Use.</a></p>
+            <p>To learn more about how Spotify collects, uses, shares and protects your personal data, please see
+                <a routerLink="/not">Spotify's Privacy Policy.</a>
+            </p>
+        </div>
+        <button type="submit" id="signupBtn">Sign up</button>
+    </form>
+    <p id="ifAct">Have an account? <a routerLink="/login">Login</a></p>
+</div>

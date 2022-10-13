@@ -1,0 +1,117 @@
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 50px;
+    background-color: black;
+    height: 14vh;
+    align-items: center;
+}
+.navBar img {
+    width: 150px;
+    height: 40px;
+}
+.menuBar {
+    display: flex;
+    font-weight: 600;
+}
+.menuBar li {
+    list-style: none;
+    padding: 0px 20px;
+    cursor: pointer;
+}
+.menuBar li a{
+    color: rgb(28, 192, 28);
+    text-decoration: none;
+}
+.spotifyBody {
+    background-image: url("../../../assets/bg.jpg");
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: cover;
+    color: rgb(28, 192, 28);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.spotifyBody h1 {
+    font-size: 3.5rem;
+    margin-top: 185px;
+}
+.spotifyBody p {
+    margin-top: 20px;
+    padding: 0px 70px;
+}
+.spotifyBody .getSpotify {
+    margin-top: 40px;
+    padding: 0px 180px;
+}
+.spotifyBody a {
+    text-decoration: none;
+    background-color: rgb(28, 192, 28);
+    color: rgb(49, 49, 185);
+    padding: 10px 40px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 35px;
+}
+.footer {
+    height: 80vh;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+.footer li {
+    list-style: none;
+    padding: 10px;
+}
+.linksSection {
+    display: flex;
+    padding: 80px;
+    justify-content: space-between;
+}
+.linksSection img {
+    width: 150px;
+    height: 40px;
+}
+.copyrightSection {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 80px;
+    color: grey;
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+.copyrightSection .privacy{
+    display: flex;
+}
+.privacy li {
+    cursor: pointer;
+}
+.privacy li:hover {
+    color: rgb(28, 192, 28);
+}
+.linksSection ul li:first-child {
+    color: grey;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+.linksSection ul li {
+    cursor: pointer;
+}
+.linksSection ul li:hover {
+    color: rgb(28, 192, 28);
+}
+.linksSection ul li:first-child:hover {
+    color: grey;
+}
+.smicons img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 0px 10px;
+}
+.smicons img:hover{
+    background: rgb(28, 192, 28);
+}
