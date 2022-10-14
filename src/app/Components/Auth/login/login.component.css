@@ -81,7 +81,8 @@ hr {
     margin-bottom: 10px;
 }
 .loginForm a {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
+    color: rgb(28, 192, 28);
 }
 #loginBtn {
     color: black;
@@ -92,11 +93,15 @@ hr {
     border-radius: 30px;
     font-weight:bolder;
     font-size: 1rem;
+    cursor: pointer;
 }
 .ifHad {
     padding: 0px 480px;
     margin-top: 10px;
 }
-ifHad a {
+.ifHad a {
     color: rgb(28, 192, 28);
+}
+#forgot {
+    cursor: pointer;
 }

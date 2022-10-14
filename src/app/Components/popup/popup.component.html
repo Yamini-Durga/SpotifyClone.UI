@@ -1,0 +1,7 @@
+<div class="popup">
+    <div class="popupMsg">
+        <button class="closeBtn" (click)="onClose()">&times;</button>
+        <p>Message here</p>
+        <button *ngIf="isSuccess" class="btnn" (click)="onVerify()">Verify</button>
+    </div>
+</div>

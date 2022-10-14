@@ -1,13 +1,13 @@
 <div class="singupContainer">
     <div class="headings">
-        <a routerLink="/"><img src="../../../assets/logo.jpg" alt="Spotify logo" /></a>
+        <a routerLink="/"><img src="../../../../assets/logo.jpg" alt="Spotify logo" /></a>
         <h1>Sign up for free to start listening.</h1>
         <a id="fb">
-            <span><img src="../../../assets/fblogo.jpg" alt="facebook logo" /></span>
+            <span><img src="../../../../assets/fblogo.jpg" alt="facebook logo" /></span>
             Sign up with Facebook
         </a>
         <a id="google">
-            <span><img src="../../../assets/google.png" alt="Google logo" /></span>
+            <span><img src="../../../../assets/google.png" alt="Google logo" /></span>
             Sign up with Google
         </a>
         <div class="hrSection">
@@ -63,7 +63,8 @@
                 <a routerLink="/not">Spotify's Privacy Policy.</a>
             </p>
         </div>
-        <button type="submit" id="signupBtn">Sign up</button>
+        <button (click)="onRegister()" type="button" id="signupBtn">Sign up</button>
     </form>
     <p id="ifAct">Have an account? <a routerLink="/login">Login</a></p>
+    <p id="ifToken">Had verification token? <a routerLink="/verify">Verify?</a></p>
 </div>

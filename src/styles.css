@@ -5,3 +5,50 @@
     padding: 0;
     font-family: 'Nunito', sans-serif;
 }
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px 6px #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.popupMsg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: whitesmoke;
+    width: 400px;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+.closeBtn, .btnn {
+    cursor: pointer;
+    text-align: center;
+    background-color: lightgray;
+    border-radius: 5px;
+    border: 0;
+    align-self: flex-end;
+}
+.closeBtn {
+    width: 25px;
+    height: 25px;
+    font-size: 1.1rem;
+}
+.closeBtn:hover,
+.btnn:hover {
+    background-color: rgb(28, 192, 28);
+}
+.btnn {
+    width: 120px;
+    border-radius: 30px;
+    padding: 10px 40px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+}
