@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PopupService } from './Services/popup.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'SpotifyCloneUI';
+  show: boolean = true;
+
+  constructor(private popupService: PopupService) { }
+  ngOnInit(): void {
+    this.popupService.show.subscribe(value => {
+      this.show = value;
+    });
+  }
 }

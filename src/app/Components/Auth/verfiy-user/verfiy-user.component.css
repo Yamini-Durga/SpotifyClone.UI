@@ -1,0 +1,44 @@
+.verifyContainer {
+    background-color: black;
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+img {
+    width: 170px;
+    height: 45px;
+    margin: -50px 0px 40px 0px;
+}
+.verifyForm {
+    display: flex;
+    flex-direction: column;
+}
+.inputBox {
+    padding: 15px 90px 15px 10px;
+    margin-top: 6px;
+    margin-bottom: 10px;
+    width: 350px;
+}
+.verifyForm a {
+    font-size: 0.8rem;
+}
+#verifyBtn {
+    background-color: rgb(28, 192, 28);
+    width: 170px;
+    margin: 20px 0px 0px 145px;
+    padding: 15px 50px;
+    border-radius: 30px;
+    font-weight:bolder;
+    font-size: 1rem;
+    border:0;
+}
+.ifExpired {
+    padding: 0px 480px;
+    margin-top: 10px;
+}
+.ifExpired a {
+    color: rgb(28, 192, 28);
+}

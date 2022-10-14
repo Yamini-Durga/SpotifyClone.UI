@@ -1,0 +1,15 @@
+<div class="verifyContainer">
+    <a routerLink="/"><img src="../../../../assets/logo.jpg" alt="Spotify logo" /></a>
+    <form class="verifyForm">
+        <label for="Email">Email address</label>
+        <input type="email" name="email" id="Email" placeholder="Email address." class="inputBox" />
+
+        <label for="Token">Verification token</label>
+        <input type="string" name="token" id="Token" placeholder="Verification token." class="inputBox" />
+
+        <button type="submit" id="verifyBtn">Verify</button>
+    </form>
+    <div class="ifExpired">
+        <p>Not registered? <a routerLink="/signup">Sign up for Spotify</a></p>
+    </div>
+</div>
