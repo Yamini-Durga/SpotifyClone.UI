@@ -16,45 +16,74 @@
         </div>
         <h3>Sign up with your email address</h3>
     </div>
-    <form class="signupForm">
-        <label for="email">What's your email?</label>
-        <input type="email" name="email" placeholder="Enter your email." class="inputBox" />
-
-        <label for="password">Create a password</label>
-        <input type="password" name="password" placeholder="Create a password." class="inputBox" />
-
-        <label for="password">Confirm your password</label>
-        <input type="password" name="password" placeholder="Confirm your password." class="inputBox" />
-
-        <label for="username">What should we call you?</label>
-        <input type="text" name="username" placeholder="Enter a profile name." class="inputBox" />
+    <form class="signupForm" [formGroup]="signupForm" (ngSubmit)="onRegister()">
+        <label for="email" class="control-label">What's your email?</label>
+        <input type="email" formControlName="email" id="email" placeholder="Enter your email."
+            class="inputBox form-control" />
+        <span *ngIf="signupForm.get('email').touched && signupForm.get('email').invalid">
+            Please, enter a valid emial.
+        </span>
+        <label for="password" class="control-label">Create a password</label>
+        <input type="password" formControlName="password" id="password" placeholder="Create a password."
+            class="inputBox form-control" />
+        <span *ngIf="signupForm.get('password').touched && signupForm.get('password').invalid">
+            Password length should be minimum 6 characters.
+        </span>
+        <label for="confirmPwd" class="control-label">Confirm your password</label>
+        <input type="password" formControlName="confirmPwd" id="confirmPwd" placeholder="Confirm your password."
+            class="inputBox form-control" />
+        <span *ngIf="signupForm.get('confirmPwd').touched && signupForm.get('confirmPwd').invalid">
+            Password length should be minimum 6 characters.
+        </span>
+        <span
+            *ngIf="signupForm.get('confirmPwd').touched && signupForm.get('password').value !== signupForm.get('confirmPwd').value">
+            Passwords does not match.
+        </span>
+        <label for="username" class="control-label">What should we call you?</label>
+        <input type="text" formControlName="username" id="username" placeholder="Enter a profile name."
+            class="inputBox form-control" />
+        <span *ngIf="signupForm.get('username').touched && signupForm.get('username').invalid">
+            Username length should be minimum 2 characters.
+        </span>
         <p>This appears on your profile.</p>
 
         <label for="what">What's your date of birth?</label>
         <div class="dob">
             <div class="monthDiv">
-                <label for="Month">Month</label><br>
-                <input type="number" name="month" id="Month" placeholder="MM" min="1" max="12" />
+                <label for="Month" class="control-label">Month</label><br>
+                <input type="number" formControlName="month" id="Month" placeholder="MM" min="1" max="12"
+                    class="form-control" />
+                <span *ngIf="signupForm.get('month').touched && signupForm.get('month').invalid">
+                    Please, select month.
+                </span>
             </div>
             <div class="dayDiv">
-                <label for="Day">Day</label><br>
-                <input type="number" name="day" id="Day" placeholder="DD" min="1" max="31" />
+                <label for="Day" class="control-label">Day</label><br>
+                <input type="number" formControlName="day" id="Day" placeholder="DD" min="1" max="31"
+                    class="form-control" />
+                <span *ngIf="signupForm.get('day').touched && signupForm.get('day').invalid">
+                    Please, select day.
+                </span>
             </div>
             <div class="yearDiv">
-                <label for="Year">Month</label><br>
-                <input type="number" name="year" id="Year" placeholder="YYYY" min="1800" max="2500" />
+                <label for="Year" class="control-label">Month</label><br>
+                <input type="number" formControlName="year" id="Year" placeholder="YYYY" min="1800" max="2500"
+                    class="form-control" />
+                <span *ngIf="signupForm.get('year').touched && signupForm.get('year').invalid">
+                    Please, select year.
+                </span>
             </div>
         </div>
 
         <label>What's your gender?</label>
         <div class="genderSection">
             <div class="maleDiv">
-                <input type="radio" name="gender" id="male" value="Male" />
-                <label for="male">Male</label><br>
+                <input type="radio" formControlName="gender" id="male" value="Male" class="form-control" />
+                <label for="male" class="control-label">Male</label><br>
             </div>
             <div class="femaleDiv">
-                <input type="radio" name="gender" id="female" value="Female" />
-                <label for="female">Female</label><br>
+                <input type="radio" formControlName="gender" id="female" value="Female" class="form-control" />
+                <label for="female" class="control-label">Female</label><br>
             </div>
         </div>
         <div class="agreement">
@@ -63,7 +92,8 @@
                 <a routerLink="/not">Spotify's Privacy Policy.</a>
             </p>
         </div>
-        <button (click)="onRegister()" type="button" id="signupBtn">Sign up</button>
+        <button type="submit" id="signupBtn" [disabled]="!signupForm.valid || 
+        signupForm.get('password').value !== signupForm.get('confirmPwd').value">Sign up</button>
     </form>
     <p id="ifAct">Have an account? <a routerLink="/login">Login</a></p>
     <p id="ifToken">Had verification token? <a routerLink="/verify">Verify?</a></p>

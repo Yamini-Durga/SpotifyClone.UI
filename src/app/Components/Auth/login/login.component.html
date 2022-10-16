@@ -18,16 +18,23 @@
             <hr>
         </div>
     </div>
-    <form class="loginForm">
+    <form class="loginForm" [formGroup]="loginForm" (ngSubmit)="onLogin()">
         <label for="Email">Email address</label>
-        <input type="email" name="email" id="Email" placeholder="Email address." class="inputBox" />
+        <input type="email" name="email" formControlName="email" id="Email" placeholder="Email address."
+            class="inputBox" />
+        <span *ngIf="loginForm.get('email').touched && loginForm.get('email').invalid">
+            Please, enter a valid emial.
+        </span>
 
         <label for="Password">Password</label>
-        <input type="password" name="password" id="Password" placeholder="Password." class="inputBox" />
-
+        <input type="password" name="password" formControlName="password" id="Password" placeholder="Password."
+            class="inputBox" />
+        <span *ngIf="loginForm.get('password').touched && loginForm.get('password').invalid">
+            Password length should be minimum 6 characters.
+        </span>
         <a (click)="onForgot()" id="forgot">Forgot your password?</a>
 
-        <button type="submit" id="loginBtn">Login</button>
+        <button type="submit" id="loginBtn" [disabled]="!loginForm.valid">Login</button>
     </form>
     <div class="ifHad">
         <p>Don't have an account? <a routerLink="/signup">Sign up for Spotify</a></p>
@@ -39,8 +46,10 @@
     <div class="popupMsg">
         <button class="closeBtn" (click)="onClose()">&times;</button>
         <h2>Get Reset Token</h2>
-        <input type="email" name="emailAdd" placeholder="Email address." class="inputBox" *ngIf="!isSuccess" />
-        <p *ngIf="isSuccess">Reset Token: {{token}}</p>
-        <button class="btnn" (click)="onReset()">Get</button>
+        <p *ngIf="errorMsg" style="color:orangered">{{errorMsg}}</p>
+        <input type="email" name="emailAdd" placeholder="Email address." class="inputBox" *ngIf="!token"
+            [(ngModel)]="emailStr" />
+        <span *ngIf="token">Please, copy token to reset password: {{token}}</span>
+        <button class="btnn" (click)="onGetToken()" *ngIf="!token">Get</button>
     </div>
 </div>

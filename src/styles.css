@@ -27,6 +27,15 @@
     border-radius: 10px;
     padding: 10px 20px;
 }
+.popupMsg p,
+.popupMsg span {
+    word-wrap:break-word; 
+    display:inline-block;
+    width: 350px;
+}
+.popupMsg span {
+    margin: 10px;
+}
 .closeBtn, .btnn {
     cursor: pointer;
     text-align: center;

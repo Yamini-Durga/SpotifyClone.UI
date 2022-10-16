@@ -6,6 +6,7 @@ import { SignupComponent } from './Components/Auth/signup/signup.component';
 import { VerfiyUserComponent } from './Components/Auth/verfiy-user/verfiy-user.component';
 import { HomeComponent } from './Components/home/home.component';
 import { NotImplementedComponent } from './Components/not-implemented/not-implemented.component';
+import { UserHomeComponent } from './Components/UserSpotify/user-home/user-home.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: "signup", component: SignupComponent },
   { path: "login", component: LoginComponent },
   { path: "verify", component: VerfiyUserComponent },
-  { path: "reset", component: ResetPasswordComponent }
+  { path: "reset", component: ResetPasswordComponent },
+  { path: "userhome", component: UserHomeComponent }
 ];
 
 @NgModule({

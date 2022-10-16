@@ -1,7 +1,7 @@
 .singupContainer {
     background-color: black;
     color: white;
-    height: 230vh;
+    height: 250vh;
     display: flex;
     flex-direction: column;
 }
@@ -140,4 +140,8 @@ h3 {
 }
 #ifAct a, #ifToken a {
     color: rgb(28, 192, 28);
+}
+.signupForm span {
+    font-size: 0.85rem;
+    color: orangered;
 }

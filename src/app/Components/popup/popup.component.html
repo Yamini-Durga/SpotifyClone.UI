@@ -1,7 +1,8 @@
 <div class="popup">
     <div class="popupMsg">
         <button class="closeBtn" (click)="onClose()">&times;</button>
-        <p>Message here</p>
+        <p>{{responseMessage}}</p>
+        <span *ngIf="token">Please, copy token to verify: {{token}}</span>
         <button *ngIf="isSuccess" class="btnn" (click)="onVerify()">Verify</button>
     </div>
 </div>
