@@ -34,6 +34,7 @@ img {
     font-weight:bolder;
     font-size: 1rem;
     border:0;
+    cursor: pointer;
 }
 .ifExpired {
     padding: 0px 480px;

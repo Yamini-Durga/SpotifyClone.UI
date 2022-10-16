@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PopupService } from 'src/app/Services/popup.service';
 
 @Component({
@@ -8,20 +9,26 @@ import { PopupService } from 'src/app/Services/popup.service';
 })
 export class PopupComponent implements OnInit {
   isSuccess: boolean = true;
-
-  constructor(private popupService: PopupService) { }
+  responseMessage: string;
+  token: string;
+  loggedIn: boolean;
+  constructor(private popupService: PopupService,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.popupService.isSuccess.subscribe(value => {
-      this.isSuccess = value;
-    });
+    this.popupService.isSuccess.subscribe(value => { this.isSuccess = value; });
+    this.popupService.responseMessage.subscribe(value => { this.responseMessage = value; });
+    this.popupService.token.subscribe(value => { this.token = value; });
+    this.popupService.loggedIn.subscribe(value => { this.loggedIn = value; });
   }
   onClose() {
     this.popupService.show.next(false);
+    if(this.loggedIn){
+      this.router.navigate(['/userhome']);
+    }
   }
   onVerify() {
-    console.log("verify!");
     this.onClose();
-    // route to verify
+    this.router.navigate(['/verify']);
   }
 }

@@ -8,11 +8,14 @@ import { PopupService } from './Services/popup.service';
 })
 export class AppComponent {
   show: boolean = true;
-
+  isLoading: boolean = false;
   constructor(private popupService: PopupService) { }
   ngOnInit(): void {
     this.popupService.show.subscribe(value => {
       this.show = value;
+    });
+    this.popupService.isLoading.subscribe(value => {
+      this.isLoading = value;
     });
   }
 }

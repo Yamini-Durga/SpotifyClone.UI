@@ -17,10 +17,17 @@
     flex-direction: column;
     align-items: center;
     background-color: whitesmoke;
-    width: 400px;
+    width: 450px;
+    min-height: 100px;
     border-radius: 10px;
-    padding: 10px 20px;
+    padding: 20px 20px;
 }
-.popupMsg p {
-    margin: 15px 0px;
+.popupMsg p,
+.popupMsg span {
+    word-wrap:break-word; 
+    display:inline-block;
+    width: 350px;
+}
+.popupMsg span {
+    margin: 10px;
 }

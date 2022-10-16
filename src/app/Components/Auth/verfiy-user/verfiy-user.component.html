@@ -1,13 +1,21 @@
 <div class="verifyContainer">
     <a routerLink="/"><img src="../../../../assets/logo.jpg" alt="Spotify logo" /></a>
-    <form class="verifyForm">
-        <label for="Email">Email address</label>
-        <input type="email" name="email" id="Email" placeholder="Email address." class="inputBox" />
+    <form class="verifyForm" [formGroup]="verifyForm" (ngSubmit)="onVerify()">
+        <label for=" Email">Email address</label>
+        <input type="email" name="email" formControlName="email" id="Email" placeholder="Email address."
+            class="inputBox" />
+        <span *ngIf="verifyForm.get('email').touched && verifyForm.get('email').invalid">
+            Please, enter a valid emial.
+        </span>
 
         <label for="Token">Verification token</label>
-        <input type="string" name="token" id="Token" placeholder="Verification token." class="inputBox" />
+        <input type="string" name="token" formControlName="token" id="Token" placeholder="Verification token."
+            class="inputBox" />
+        <span *ngIf="verifyForm.get('token').touched && verifyForm.get('token').invalid">
+            Please, enter token.
+        </span>
 
-        <button type="submit" id="verifyBtn">Verify</button>
+        <button type="submit" id="verifyBtn" [disabled]="!verifyForm.valid">Verify</button>
     </form>
     <div class="ifExpired">
         <p>Not registered? <a routerLink="/signup">Sign up for Spotify</a></p>
