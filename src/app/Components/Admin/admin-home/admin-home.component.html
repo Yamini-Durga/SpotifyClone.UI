@@ -1,0 +1,27 @@
+<div class="adminContainer">
+    <div class="adminNavbar">
+        <a href="adminportal">
+            <h2>Admin Dashboard</h2>
+        </a>
+        <button (click)="onProfilename()">
+            <img src="../../../../assets/user.png" alt="user" />{{user.name}}
+        </button>
+        <div *ngIf="showLogout" class="logoutPopup">
+            <button class="logoutbtn" (click)="onLogout()">Logout</button>
+        </div>
+    </div>
+
+    <div class="adminBody">
+        <ul class="sideNav">
+            <a [routerLink]="['/adminportal']" routerLinkActive="router-link-active"><img
+                    src="../../../../assets/users.png" alt="users" /><span>Users</span>
+            </a>
+            <a [routerLink]="['/adminportal/songs']" routerLinkActive="router-link-active">
+                <img src="../../../../assets/musicIcon.jpg" alt="songs" /><span>Songs</span>
+            </a>
+        </ul>
+        <div class="crud-ops">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,140 @@
+<div class="addSong">
+    <p>Total Songs: {{count}}</p>
+    <button (click)="onAddSong()">Add New Song</button>
+</div>
+<table class="songstable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Artist</th>
+            <th>SongUrl</th>
+            <th>ImageUrl</th>
+            <th>Duration</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of songdata">
+            <td>{{row.name}}</td>
+            <td>{{row.artist}}</td>
+            <td>{{row.songUrl}}</td>
+            <td>{{row.imageUrl}}</td>
+            <td>{{row.duration}}</td>
+            <td>
+                <button (click)="onEdit(row)">
+                    <img src="../../../../assets/pen-to-square-solid.svg" alt="edit" />
+                </button>
+                <button (click)="onDelete(row)">
+                    <img src="../../../../assets/trash-solid.svg" alt="delete" />
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<!--Add New Song-->
+<div class="popup" *ngIf="showAddBox">
+    <div class="popupMsg">
+        <button class="closeBtn" (click)="onClose()">&times;</button>
+        <h2>Add Song</h2>
+        <p *ngIf="errorMsg" style="color:orangered">{{errorMsg}}</p>
+        <p *ngIf="successMsg" style="color: green">{{successMsg}}</p>
+        <form class="addForm" [formGroup]="addSongForm" (ngSubmit)="onAddNewSong()" *ngIf="errorMsg || !successMsg">
+            <label for="songname" class="control-label">Song Name</label>
+            <input type="text" formControlName="songname" id="songname" class="inputBox form-control"
+                placeholder="Enter Song Name" />
+            <span *ngIf="addSongForm.get('songname').touched && addSongForm.get('songname').invalid">
+                Song Name length should be minimum 2 characters.
+            </span>
+            <label for="artistname" class="control-label">Artist Name</label>
+            <input type="text" formControlName="artistname" id="artistname" class="inputBox form-control"
+                placeholder="Enter Artist Name" />
+            <span *ngIf="addSongForm.get('artistname').touched && addSongForm.get('artistname').invalid">
+                Artist Name length should be minimum 2 characters.
+            </span>
+            <label for="imageUrl" class="control-label">Choose Image</label>
+            <input type="file" accept="image/*" id="imageUrl" (change)="selectFile($event)" class="fileInput" />
+            <button [disabled]="!selectedFile" (click)="upload('image')" class="fileBtn">Upload Image</button>
+
+            <label for="songUrl" class="control-label">Choose Song</label>
+            <input type="file" accept="audio/*" id="songUrl" (change)="selectFile($event)" class="fileInput" />
+            <button [disabled]="!selectedFile" (click)="upload('audio')" class="fileBtn">Upload Song</button>
+
+            <label for="duration" class="control-label">Duration</label>
+            <input type="text" formControlName="duration" id="duration" class="inputBox form-control"
+                placeholder="Enter Duration" />
+            <span *ngIf="addSongForm.get('duration').touched && addSongForm.get('duration').invalid">
+                Enter duration.
+            </span>
+
+            <div *ngIf="currentFileUpload" class="progress mt-2">
+                <div class="progress-bar progress-bar-info" role="progressbar" attr.aria-valuenow="{{ percentage }}"
+                    aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: percentage + '%' }">
+                    {{ percentage }}%
+                </div>
+            </div>
+            <button type="submit" id="addBtn" [disabled]="!addSongForm.valid || !uploadedSong || !uploadedImage">Add
+                Song</button>
+        </form>
+    </div>
+</div>
+<!--Edit Song-->
+<div class="popup" *ngIf="showEditBox">
+    <div class="popupMsg">
+        <h2>Edit Song</h2>
+        <button class="closeBtn" (click)="onClose()">&times;</button>
+        <p *ngIf="errorMsg" style="color:orangered">{{errorMsg}}</p>
+        <p *ngIf="successMsg" style="color: green">{{successMsg}}</p>
+        <form class="addForm" [formGroup]="editSongForm" (ngSubmit)="onEditNewSong()" *ngIf="errorMsg || !successMsg">
+            <label for="songname" class="control-label">Song Name</label>
+            <input type="text" formControlName="songname" id="songname" class="inputBox form-control"
+                placeholder="Song Name" />
+            <span *ngIf="editSongForm.get('songname').touched && editSongForm.get('songname').invalid">
+                Song Name length should be minimum 2 characters.
+            </span>
+            <label for="artistname" class="control-label">Artist Name</label>
+            <input type="text" formControlName="artistname" id="artistname" class="inputBox form-control"
+                placeholder="Artist Name" />
+            <span *ngIf="editSongForm.get('artistname').touched && editSongForm.get('artistname').invalid">
+                Artist Name length should be minimum 2 characters.
+            </span>
+            <div class="existingImg">
+                <label for="imageUrl" class="control-label">Choose Image</label>
+                <img src="{{srcImageUrl}}" alt="song image" id="chooseImg" />
+            </div>
+            <input type="file" accept="image/*" id="imageUrl" (change)="selectFile($event)" class="fileInput" />
+            <button [disabled]="!selectedFile" (click)="upload('image')" class="fileBtn">Upload Image</button>
+
+            <div class="existingSong">
+                <label for="songUrl" class="control-label">Choose Song</label>
+                <audio controls>
+                    <source src="{{srcSongUrl}}" type="audio/mp3">
+                </audio>
+            </div>
+            <input type="file" accept="audio/*" id="songUrl" (change)="selectFile($event)" class="fileInput" />
+            <button [disabled]="!selectedFile" (click)="upload('audio')" class="fileBtn">Upload Song</button>
+
+            <label for="duration" class="control-label">Duration</label>
+            <input type="text" formControlName="duration" id="duration" class="inputBox form-control"
+                placeholder="Duration" />
+            <span *ngIf="editSongForm.get('duration').touched && editSongForm.get('duration').invalid">
+                Enter duration.
+            </span>
+
+            <div *ngIf="currentFileUpload" class="progress mt-2">
+                <div class="progress-bar progress-bar-info" role="progressbar" attr.aria-valuenow="{{ percentage }}"
+                    aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: percentage + '%' }">
+                    {{ percentage }}%
+                </div>
+            </div>
+            <button type="submit" id="addBtn" [disabled]="!editSongForm.valid">Edit Song</button>
+        </form>
+    </div>
+</div>
+<!--Delete Song-->
+<div class="popup" *ngIf="showDeleteBox">
+    <div class="popupMsg">
+        <button class="closeBtn" (click)="onClose()">&times;</button>
+        <p *ngIf="errorMsg" style="color:orangered">{{errorMsg}}</p>
+        <p *ngIf="successMsg" style="color: green">{{successMsg}}</p>
+    </div>
+</div>

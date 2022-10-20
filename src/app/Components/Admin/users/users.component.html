@@ -1,0 +1,99 @@
+<div class="addUser">
+    <p>Total users: {{count}}</p>
+    <a routerLink="/login">Add New User</a>
+</div>
+<table class="userstable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Date Of Birth</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of userdata">
+            <td>{{row.name}}</td>
+            <td>{{row.email}}</td>
+            <td>{{row.gender}}</td>
+            <td>{{row.month}}-{{row.date}}-{{row.year}}</td>
+            <td>
+                <button (click)="onEdit(row)">
+                    <img src="../../../../assets/pen-to-square-solid.svg" alt="edit" />
+                </button>
+                <button (click)="onDelete(row)">
+                    <img src="../../../../assets/trash-solid.svg" alt="delete" />
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- edit popup -->
+<div class="popup" *ngIf="showEditBox">
+    <div class="popupMsg">
+        <button class="closeBtn" (click)="onClose()">&times;</button>
+        <h2>Edit User</h2>
+        <p *ngIf="errorMsg" style="color:orangered">{{errorMsg}}</p>
+        <p *ngIf="successMsg" style="color: green">{{successMsg}}</p>
+        <form class="editForm" [formGroup]="editForm" (ngSubmit)="onEditUser()" *ngIf="errorMsg || !successMsg">
+            <label for="email" class="control-label">Email</label>
+            <input type="email" formControlName="email" id="email" class="inputBox form-control" />
+            <span *ngIf="editForm.get('email').touched && editForm.get('email').invalid">
+                Please, enter a valid emial.
+            </span>
+            <label for="username" class="control-label">Name</label>
+            <input type="text" formControlName="username" id="username" class="inputBox form-control" />
+            <span *ngIf="editForm.get('username').touched && editForm.get('username').invalid">
+                Username length should be minimum 2 characters.
+            </span>
+
+            <label for="what">Date Of Birth</label>
+            <div class="dob">
+                <div class="monthDiv">
+                    <label for="Month" class="control-label">Month</label><br>
+                    <input type="number" formControlName="month" id="Month" min="1" max="12" class="form-control" />
+                    <span *ngIf="editForm.get('month').touched && editForm.get('month').invalid">
+                        Please, select month.
+                    </span>
+                </div>
+                <div class="dayDiv">
+                    <label for="Day" class="control-label">Day</label><br>
+                    <input type="number" formControlName="day" id="Day" min="1" max="31" class="form-control" />
+                    <span *ngIf="editForm.get('day').touched && editForm.get('day').invalid">
+                        Please, select day.
+                    </span>
+                </div>
+                <div class="yearDiv">
+                    <label for="Year" class="control-label">Month</label><br>
+                    <input type="number" formControlName="year" id="Year" min="1800" max="2500" class="form-control" />
+                    <span *ngIf="editForm.get('year').touched && editForm.get('year').invalid">
+                        Please, select year.
+                    </span>
+                </div>
+            </div>
+
+            <label>What's your gender?</label>
+            <div class="genderSection">
+                <div class="maleDiv">
+                    <input type="radio" formControlName="gender" id="male" value="Male" class="form-control" />
+                    <label for="male" class="control-label">Male</label><br>
+                </div>
+                <div class="femaleDiv">
+                    <input type="radio" formControlName="gender" id="female" value="Female" class="form-control" />
+                    <label for="female" class="control-label">Female</label><br>
+                </div>
+            </div>
+            <button type="submit" id="editBtn" [disabled]="!editForm.valid ">Edit</button>
+        </form>
+    </div>
+</div>
+<!-- delete-->
+<div class="popup" *ngIf="showDeleteBox">
+    <div class="popupMsg">
+        <button class="closeBtn" (click)="onClose()">&times;</button>
+        <p *ngIf="errorMsg" style="color:orangered">{{errorMsg}}</p>
+        <p *ngIf="successMsg" style="color: green">{{successMsg}}</p>
+    </div>
+</div>
