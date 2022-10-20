@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyDK7u6LykzCTz7SzfBSCMfXruzQYczexHU",
+    authDomain: "spotifyclone-files.firebaseapp.com",
+    projectId: "spotifyclone-files",
+    storageBucket: "spotifyclone-files.appspot.com",
+    messagingSenderId: "1036649873899",
+    appId: "1:1036649873899:web:b69519e9bc69c2dd9319ae",
+    databaseURL: "https://spotifyclone-files.firebaseio.com"
+  }
 };
 
 /*

@@ -1,0 +1,73 @@
+.adminNavbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    height: 12vh;
+    align-items: center;
+    padding: 0px 15px;
+}
+.adminNavbar a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+.adminNavbar img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    border-radius: 50%;
+}
+.adminBody {
+    display: flex;
+}
+.sideNav {
+    width: 250px;
+    background-color: antiquewhite;
+    height: 88vh;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.847);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.sideNav img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.sideNav a {
+    display: flex;
+    align-items: center;
+    margin: 20px 15px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+.sideNav li {
+    list-style: none;
+}
+.adminNavbar button {
+    color: white;
+    background-color: black;
+}
+.logoutPopup {
+    position: fixed;
+    top: 50px;
+    right: 0;
+    width: 100px;
+    box-shadow: 5px 5px 6px #ccc;
+    border-radius: 10px;
+    padding: 20px;
+}
+.logoutPopup button {
+    background-color: gainsboro;
+    width: 100px;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+    border: 0;
+    cursor: pointer;
+}

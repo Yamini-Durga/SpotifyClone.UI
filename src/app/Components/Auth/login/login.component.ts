@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Userdata } from 'src/app/Models/Userdata';
 import { AuthService } from 'src/app/Services/auth.service';
 import { PopupService } from 'src/app/Services/popup.service';
 
@@ -56,6 +57,8 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (response) => {
           this.popupService.isLoading.next(false);
+          let user: Userdata = response["data"];
+          this.authService.setUserInLocalStorage(user);
           this.resetForm();
           this.popupService.show.next(true);
           this.popupService.isSuccess.next(false);
