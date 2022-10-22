@@ -54,8 +54,9 @@ export class SongsComponent implements OnInit {
           this.popupService.isLoading.next(false);
           this.popupService.show.next(true);
           this.popupService.isSuccess.next(false);
-          if(error.status === 401){
+          if(error.status === 401 || error.status === 403){
             this.popupService.responseMessage.next("You are not allowed to view this portal");
+            this.errorMsg = "You are not allowed to view this portal";
           }
           else{
             this.popupService.responseMessage.next(error.error.message);
@@ -89,6 +90,9 @@ export class SongsComponent implements OnInit {
         this.popupService.isLoading.next(false);
         this.errorMsg = error.error?.message;
         this.showDeleteBox = true;
+        if(error.status === 401 || error.status === 403){
+            this.errorMsg = "You are not allowed to view this portal";
+          }
       }
     );
   }
@@ -178,6 +182,10 @@ export class SongsComponent implements OnInit {
         this.fileUploadService.songUrl.next(null);
         this.fileUploadService.imageUrlName.next(null);
         this.fileUploadService.songUrlName.next(null);
+        if(error.status === 401 || error.status === 403){
+            this.popupService.responseMessage.next("You are not allowed to view this portal");
+            this.errorMsg = "You are not allowed to view this portal";
+          }
       }
     );
   }
@@ -221,6 +229,10 @@ export class SongsComponent implements OnInit {
         this.fileUploadService.songUrl.next(null);
         this.fileUploadService.imageUrlName.next(null);
         this.fileUploadService.songUrlName.next(null);
+        if(error.status === 401 || error.status === 403){
+            this.popupService.responseMessage.next("You are not allowed to view this portal");
+            this.errorMsg = "You are not allowed to view this portal";
+          }
       }
     );
   }

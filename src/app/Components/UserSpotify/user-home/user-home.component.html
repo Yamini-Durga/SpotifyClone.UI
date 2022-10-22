@@ -1,4 +1,42 @@
-<p>user-home works!</p>
+<div class="userContainer">
+    <div class="userNavbar">
+        <a routerLink="/userhome"><img src="../../../assets/logo.jpg" alt="Spotify logo" /></a>
+        <button (click)="onProfilename()">
+            <img src="../../../../assets/user.png" alt="user" />hi
+            {{user.name}}
+        </button>
+        <div *ngIf="showLogout" class="logoutPopup">
+            <button class="logoutbtn" (click)="onLogout()">Logout</button>
+        </div>
+    </div>
+
+    <div class="userBody">
+        <ul class="sideNav">
+            <button (click)="onHome()">
+                <img src="../../../../assets/home.PNG" alt="users" /><span>Home</span>
+            </button>
+            <button (click)="onSearch()">
+                <img src="../../../../assets/searchicon.PNG" alt="users" /><span>Search</span>
+            </button>
+            <button>
+                <img src="../../../../assets/library.PNG" alt="users" /><span>Your Library</span>
+            </button>
+            <button>
+                <img src="../../../../assets/playliast.PNG" alt="users" /><span>Create Playlist</span>
+            </button>
+            <button (click)="onLikedSongs('likeTab')">
+                <img src="../../../../assets/like.jpg" alt="users" /><span>Liked Songs</span>
+            </button>
+        </ul>
+        <div class="songslist">
+            <div *ngIf="ifSearch" class="searchBox">
+                <input type="text" #searchStr placeholder="search" />
+                <button (click)="onSearchStr()">Search</button>
+            </div>
+            <app-view-songs [songsList]="listOfSongs" [likedSongsIds]="likedSongs"></app-view-songs>
+        </div>
+    </div>
+</div>
 <!--
     Show all ui here
     view songs page is separated component

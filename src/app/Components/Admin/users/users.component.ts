@@ -34,12 +34,13 @@ export class UsersComponent implements OnInit {
           this.popupService.show.next(false);
           this.count = response["data"].totalUsers;
           this.userdata = response["data"].users;
+          this.popupService.responseMessage.next(response["messsage"]);
         },
         (error) => {
           this.popupService.isLoading.next(false);
           this.popupService.show.next(true);
           this.popupService.isSuccess.next(false);
-          if(error.status === 401){
+          if(error.status === 401 || error.status === 403){
             this.popupService.responseMessage.next("You are not allowed to view this portal");
           }
           else{

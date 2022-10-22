@@ -1,1 +1,12 @@
-<p>view-songs works!</p>
+<div *ngFor="let song of songsList">
+    <div class="playSong">
+        <img src="{{song.imageUrl}}" src="Image Url" />
+        <p>{{song.name}}</p>
+        <button (click)="onLiked(song.songId)">
+            <img src="../../../../assets/heart.jpg" alt="users" [ngClass]="isLikedSong(song.songId)" />
+        </button>
+        <audio controls>
+            <source src="{{song.songUrl}}" type="audio/mp3">
+        </audio>
+    </div>
+</div>

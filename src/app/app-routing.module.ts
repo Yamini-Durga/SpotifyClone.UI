@@ -20,7 +20,8 @@ const routes: Routes = [
   { path: "verify", component: VerfiyUserComponent },
   { path: "reset", component: ResetPasswordComponent },
   { path: "userhome", component: UserHomeComponent,
-    canActivate: [AuthGaurd] },
+    canActivate: [AuthGaurd] 
+  },
   { path: "adminportal", component: AdminHomeComponent, 
     canActivate: [AuthGaurd],
     children: [

@@ -1,0 +1,31 @@
+.playSong {
+    display: flex;
+    background-color: black;
+    margin: 15px 150px;
+    padding: 10px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-between;
+    width: 700px;
+}
+.playSong img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+}
+.playSong button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.playSong button img {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+}
+.likedCls {
+    filter: sepia(86%) saturate(577%) hue-rotate(89deg) brightness(99%);
+}
+.dislikeCls {
+    filter: sepia(0%) saturate(7500%) hue-rotate(23deg) brightness(121%);
+}
